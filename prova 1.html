@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qual sua idade</title>
+    <style type="text/css">
+        body{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> verifique sua idade </h2>
+        <input type="tel" id="numero">digite seu numero<br>
+        <input type="email" id="email">digite seu email<br>
+        <input type="niver" id="niver ">digite seu niver<br>
+        <input type="cpf" id="cpf ">digite seu cpf<br>
+        <input type="genero" id="genero ">digite seu genêro<br>
+        <button onclick="verificar()">verificar</button>
+        
+    </div>
+    <script>
+        function verificar(){
+            nome=document.getElementById("tel").value;
+            nome=document.getElementById("email").value;
+            nome=document.getElementById("niver").value;
+            nome=document.getElementById("cpf").value;
+            nome=document.getElementById("genero").value;
+            document.getElementById("result").innerHTML=result;
+            alert(result)
+        }
+    </script>
+</body>
+</html>

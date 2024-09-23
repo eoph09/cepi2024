@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do número escondido</title>
+</head>
+<body>
+    <!--
+        Descritivo
+           _-_ Jogo do número escondido_-_
+        O jogo de basaeia em ter um número aleatório escondido e o usuário deve encontra-lo
+        O usuário deve digitar em um campo seu palpite e se o usuário acertar o jogo mostra:
+           O número escondido
+           Quantidades de tentativas
+           Porcentagem de chance de acerto;
+        O código deve pedir:
+           O nome do usuário e guardar;
+           Um valor máximo a ser sorteado;
+           Um botão para começar;
+           Sumir com as opções anteriores;
+        Mostrar uma tela nova com:
+           O nome do usuário o valor mínimo e o valor máximo;
+           Uma tela o de o usuário vai fazer o palpite;
+           Um botão para checar;
+        Variáveis:
+           nome (para guardar o nome)
+           valor (para guardar o valor máximo a ser sorteado);
+           num (para guardar o valor a ser sorteado com a função:
+               Math.floor(Math.random()*valor)
+            min (Inicialmente guarda o valor ZERO e depois guarda o próximo min)
+            max (Inicialmente guarda valor e depois guarda o próximo max)
+            palpite (Para guardar o palpite do usuário);
+            tentativas (Para somar as tentativas)
+        Testes:
+            Se o palpite for igual a num:
+                Mostra na tela parabéns nome você achou o num com tentativas tentativas;
+            Se o palpite for maior que num:
+                max recebe palpite;
+            Se o pslpite foe menor que num:
+                min recebe palpite;
+            Se o palpite for maior que max ou menor que min:
+                Aparece na tela uma zueira para o usuário.
+            Em todas as tentativas a variável tentativas soma mais um.
+        Funções:
+            sortear():
+                Grava os dados de nome e valor;
+                Limpa a tela;
+            jogar():
+                Faz aparecer na tela:
+                    O nome do jogador o numero de tentativas o min o max
+                    Um campo para o palpite;
+                    Um botão para testar;
+            Checar();
+                Soma um em testes;
+                TESTA SE O NUM == PALPITE;
+                    Abre uma nova tela mostrando:
+                        Nome do usuário;
+                        Quantidades de tentativas;
+                        O número escondido;
+                        Porcentagem de acerto;
+                Se o palpite for menor que num:
+                    min recebe o valor do palpite;
+                Se o palpite for maior que o num:
+                    max recebe o valor de palpite;
+                Se o palpite for maior que max ou menor que min:
+                    Aparece uma zueira.    
+    -->
+    <div id="jogo">
+        <h1>Jogo do número escondido</h1>
+        <div id="cadastro">
+            <input type="text" id="nome" placeholder="Digite seu nome"><br>
+            <label for="">Digite um número maior que 0</label>
+            <input type="number" min="0" id="valor"><br>
+            <button onclick="sortear()">Começar o jogo</button>
+        </div>    
+        <div id="tela"></div>
+        <div id="fim"></div>
+    </div>    
+</body>
+<footer>
+<script>
+    let nome=0, valor=0, num=0, palpite=0, tentativa=0, min=0, max=0;
+    function sortear(){
+        nome=document.getElementById("nome").value;
+        valor=document.getElementById("valor").value;
+        max=valor;
+        num=Math.floor(Math.random()*valor);
+        //alert(nome);
+        //alert(valor);
+        //alert(num);
+        document.getElementById("cadastro").innerHTML="";
+        jogar();
+    }
+    function jogar(){
+        document.getElementById("tela").innerHTML=
+        "Olá "+nome+", você deve escolher um número entre "+min+" e "+max+
+        ". Você ja usou "+tentativa+" tentativas.<br> Realize um palpite"+
+        " dentro do intervalo e encontre o número escondido.<br>"+
+        "<input type='number' min='0' id='palpite'><br>"+
+        "<button onclick='checar()'>Checar</button>"
+    }
+    function checar(){
+        tentativa++;
+        palpite=document.getElementById("palpite").value;
+       // alert(num);
+       //if(palpite>max||palpite<min){
+           // alert("Não acredito que você digitou um valor fora do intervalo 😤");
+        // }else
+        if(palpite>num&&palpite<max){
+            max=palpite;
+            alert("errou")
+        }else if(palpite<num&&palpite>min){
+           min=palpite;
+            alert("errou")
+        }else if(palpite==num){
+            alert("Você acertou");
+        }else{
+            alert("Algo deu errado")
+        }
+        jogar();
+    }
+</script>    
+</footer>
+</html>
